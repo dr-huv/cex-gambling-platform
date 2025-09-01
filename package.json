@@ -1,0 +1,37 @@
+{
+  "name": "cex-gambling-platform",
+  "version": "1.0.0",
+  "description": "High-performance CEX with crypto gambling platform",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "install-all": "npm install && npm run install:frontend && npm run install:backend",
+    "install:frontend": "cd frontend && npm install",
+    "install:backend": "cd backend && npm install",
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\" \"npm run dev:engine\"",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:engine": "cd order-engine && cargo run",
+    "build": "npm run build:frontend && npm run build:backend && npm run build:engine",
+    "build:frontend": "cd frontend && npm run build",
+    "build:backend": "cd backend && npm run build",
+    "build:engine": "cd order-engine && cargo build --release",
+    "test": "npm run test:frontend && npm run test:backend && npm run test:engine",
+    "test:frontend": "cd frontend && npm test",
+    "test:backend": "cd backend && npm test", 
+    "test:engine": "cd order-engine && cargo test",
+    "lint": "npm run lint:frontend && npm run lint:backend",
+    "lint:frontend": "cd frontend && npm run lint",
+    "lint:backend": "cd backend && npm run lint"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  }
+}
